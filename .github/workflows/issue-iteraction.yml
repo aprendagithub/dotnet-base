@@ -2,7 +2,7 @@ name: Issue Iteraction
 
 on:
   issues:
-    types: [created]
+    types: [opened]
 jobs:
   commentCreated:
     runs-on: ubuntu-latest
