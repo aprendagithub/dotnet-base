@@ -1,4 +1,4 @@
-name: Simple Build Matrix
+name: Simple Deploy
 
 on:
   workflow_dispatch:
@@ -6,11 +6,8 @@ on:
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
 
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -37,3 +34,20 @@ jobs:
       with:
         name: app
         path: ${{ github.workspace }}//demo
+
+
+  deploy-dev:
+    name: Deploy Dev
+    runs-on: ubuntu-latest
+
+    environment:
+      name: dev
+        
+
+    needs: build
+    steps:
+      - name: Test
+        run: "Hello World"
+
+
+
