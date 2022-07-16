@@ -1,0 +1,16 @@
+name: Issue Iteraction
+
+on:
+  issues:
+    types: [created]
+jobs:
+  commentCreated:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create comment
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          issue-number: 1
+          body: |
+            Comentario automatico na Issue
+          reactions: '+1'
